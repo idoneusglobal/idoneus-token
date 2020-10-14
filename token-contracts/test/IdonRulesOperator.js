@@ -67,24 +67,6 @@ describe('Idon Rules Operator', () => {
         await assert.revert(idonRulesOperator.from(rulesOperatorAdmin).setIdonTokenPrice(newPrice));
       });
 
-      it('Should set minimum token price limit from owner', async () => {
-        const eventName = "MinimumPriceLimitModified";
-        const newMinimumLimit = '12';
-        let transaction = await idonRulesOperator.setMinimumPriceLimit(newMinimumLimit);
-
-        const transactionReceipt = await idonRulesOperator.verboseWaitForTransaction(transaction);
-        let isEmitted = utils.hasEvent(transactionReceipt, idonRulesOperator, eventName);
-        assert(isEmitted, 'Event MinimumPriceLimitModified was not emitted');
-
-        let minimumLimit = await idonRulesOperator.minimumIDONPrice();
-        assert.equal(newMinimumLimit, minimumLimit.toString());
-      });
-
-      it('Should revert if not owner tries to set minimum price limit', async () => {
-        const newMinimumLimit = '12';
-        await assert.revert(idonRulesOperator.from(rulesOperatorAdmin).setMinimumPriceLimit(newMinimumLimit));
-      });
-
       it('Should set fee percentagefrom owner', async () => {
         const eventName = "FeePercentageModified";
         const newFee = '20';
