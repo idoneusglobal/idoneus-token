@@ -171,7 +171,7 @@ describe('Idon Rules Operator', () => {
           await assert.revert(idoneusTokenInstance.from(nonWhitelistedUser).transfer(whitelistedUserOne.address, amountToMint));
         });
 
-        it('Should revert if transfer tokens between non-whitelisted and whitelisted', async () => {
+        it('Should revert if transfer tokens between non-whitelisted and non-whitelisted', async () => {
           await assert.revert(idoneusTokenInstance.from(nonWhitelistedUser).transfer(nonWhitelistedUserTwo.address, amountToMint));
         });
       });
