@@ -4,7 +4,7 @@ const Whitelisting = require('../build/Whitelisting.json');
 const IdonRulesOperator = require('../build/IdonRulesOperator.json');
 
 
-const idonTokenPrice = '10000'; // 10 usd
+const idonTokenPrice = '10001'; // 10.001 usd
 const minimumIDONPrice = '10000'; // 10 usd
 const transferFeePercentage = '0'; // 0%
 

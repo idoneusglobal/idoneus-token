@@ -48,10 +48,6 @@ contract IdonRulesOperator is RulesOperator, Operator {
     }
 
     event TokenPriceModified(address indexed executor, uint256 tokenPrice);
-    event MinimumPriceLimitModified(
-        address indexed executor,
-        uint256 minimumPrice
-    );
     event FeePercentageModified(
         address indexed executor,
         uint256 feePercentage
@@ -94,7 +90,6 @@ contract IdonRulesOperator is RulesOperator, Operator {
         whitelisting = Whitelisting(_whitelisting);
 
         emit TokenPriceModified(msg.sender, _idonTokenPrice);
-        emit MinimumPriceLimitModified(msg.sender, _minimumIDONPrice);
         emit FeePercentageModified(msg.sender, _transferFeePercentage);
         emit WhitelistingInstanceModified(msg.sender, _whitelisting);
     }
@@ -110,15 +105,6 @@ contract IdonRulesOperator is RulesOperator, Operator {
         );
         idonTokenPrice = _price;
         emit TokenPriceModified(msg.sender, _price);
-    }
-
-    /**
-     * @dev Sets minimum IDON price.
-     * @param _minimumPriceLimit The target minimum price limit.
-     */
-    function setMinimumPriceLimit(uint256 _minimumPriceLimit) public onlyOwner {
-        minimumIDONPrice = _minimumPriceLimit;
-        emit MinimumPriceLimitModified(msg.sender, _minimumPriceLimit);
     }
 
     /**
